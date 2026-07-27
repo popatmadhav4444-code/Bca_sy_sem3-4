@@ -1,0 +1,9 @@
+
+SQL> select *from employees;
+
+EMPLOYEEID EMPLOYEENAME                                       DEPARTMENTID      
+---------- -------------------------------------------------- ------------      
+       101 jhon                                                          1      
+       102 monk                                                          2      
+
+SQL> 

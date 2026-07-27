@@ -1,0 +1,72 @@
+create table md values(rollno number(4),name varchar(6));
+create table md values(rollno number(4),name varchar(6))
+                *
+ERROR at line 1:
+ORA-00922: missing or invalid option 
+
+
+SQL> select *from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+EMP3                           TABLE                                            
+PERSON123                      TABLE                                            
+CUSTOMERS1                     TABLE                                            
+BIN$aupn0qRvS9uyYF9JY65yAA==$0 TABLE                                            
+BIN$oyoAOkTsRUSqPE3ar76RCA==$0 TABLE                                            
+STUD                           TABLE                                            
+DEPT                           TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+BIN$rqymebPNTcKZW2DQJdcZRw==$0 TABLE                                            
+BIN$/O0KRS5QTwCTL1h8WIBNqg==$0 TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+NOTHING                        TABLE                                            
+HELLO                          TABLE                                            
+HEY                            TABLE                                            
+EMP2                           TABLE                                            
+BIN$RDoqXj7LRcal25D+xdgVdA==$0 TABLE                                            
+BIN$qTjdk1VEQRWHcYx5UOSYEA==$0 TABLE                                            
+STUDENT                        TABLE                                            
+STUDENTS                       TABLE                                            
+HARSH                          TABLE                                            
+EMPLOYEE                       TABLE                                            
+KAMIL                          TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+SONU                           TABLE                                            
+EXAMMARK                       TABLE                                            
+BIN$jvJRcAA2QJm8wcLdP+sZmg==$0 TABLE                                            
+MADHAV                         TABLE                                            
+EMP                            TABLE                                            
+CUSTOMERS                      TABLE                                            
+TRY                            TABLE                                            
+ORDERS                         TABLE                                            
+BIN$wE38E+ErSpK8W7Iwf4YHmg==$0 TABLE                                            
+ABC                            TABLE                                            
+EXAM                           TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+RESULT                         TABLE                                            
+PERSONS                        TABLE                                            
+V                              TABLE                                            
+LOGIN                          TABLE                                            
+JOBLIST                        TABLE                                            
+EMPLOYEE1                      TABLE                                            
+V1                             TABLE                                            
+WORKER                         TABLE                                            
+BIN$n1VfKzvDTq+C1EXxMvGeQw==$0 TABLE                                            
+EMP1                           TABLE                                            
+DEPT1                          TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+BIN$lSHXk4SWRvC2hCkeQw4/zg==$0 TABLE                                            
+
+45 rows selected.
+
+SQL> 
