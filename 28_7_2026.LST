@@ -1,0 +1,121 @@
+create table course(coursno number(4)PRIMARY KEY,coursename varchar(16));
+
+Table created.
+
+SQL> create table students(studentsID number(6)PRIMARY KEY,studentsname varchar(15),CourseID INT,    FOREIGN KEY (CourseID)        REFERENCES Courses(CourseID));
+create table students(studentsID number(6)PRIMARY KEY,studentsname varchar(15),CourseID INT,    FOREIGN KEY (CourseID)        REFERENCES Courses(CourseID))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table std(stdID number(6)PRIMARY KEY,stdname varchar(15),courseID int,FOREIGN KEY(courseID)REFERENCES courses(courseID));
+
+Table created.
+
+SQL> insert into course values(1,'BBA');
+
+1 row created.
+
+SQL> insert into course values(2,'BCA');
+
+1 row created.
+
+SQL> insert into std values(1201,'raj',1);
+insert into std values(1201,'raj',1)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.SYS_C005346) violated - parent key not 
+found 
+
+
+SQL> alter table drivelinc(name varchar(16),age number
+  2  (6)check(age>18));
+alter table drivelinc(name varchar(16),age number
+                     *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> create table licence(name varchar(15),city varchar(16),age number(5)check(age>18));
+
+Table created.
+
+SQL> desc licence;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(15)
+ CITY                                               VARCHAR2(16)
+ AGE                                                NUMBER(5)
+
+SQL> insert into licence values('meet','morbi',20);
+
+1 row created.
+
+SQL> select *from licence;
+
+NAME            CITY                    AGE                                     
+--------------- ---------------- ----------                                     
+meet            morbi                    20                                     
+
+SQL> insert into licence values('mohib','wankaner',15);
+insert into licence values('mohib','wankaner',15)
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C005347) violated 
+
+
+SQL> create table defult(name varchar(17),no number(4),city varchar(16)DEFAULT('rajkot'));
+
+Table created.
+
+SQL> desc defult;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(17)
+ NO                                                 NUMBER(4)
+ CITY                                               VARCHAR2(16)
+
+SQL> insert into defult values('dinesh',01,'rajkot');
+
+1 row created.
+
+SQL> insert into defult values('mohit',02);
+insert into defult values('mohit',02)
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> select *from defult;
+
+NAME                      NO CITY                                               
+----------------- ---------- ----------------                                   
+dinesh                     1 rajkot                                             
+
+SQL> insert into defult values('raj',03,defult);
+insert into defult values('raj',03,defult)
+                                   *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into defult values('meet',05,defult);
+insert into defult values('meet',05,defult)
+                                    *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into defult values('mk',06,default);
+
+1 row created.
+
+SQL> select *from defult;
+
+NAME                      NO CITY                                               
+----------------- ---------- ----------------                                   
+dinesh                     1 rajkot                                             
+mk                         6 rajkot                                             
+
+SQL> 
