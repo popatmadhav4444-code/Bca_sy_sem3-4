@@ -1,144 +1,109 @@
-create table order_detail(order_no number(5),order_date number(17),item varchar(19),item_price number(15),discount number(5));
+create table item_master(item_id number(4),item_name varchar(15),price number(7),company_code varcahr);
+create table item_master(item_id number(4),item_name varchar(15),price number(7),company_code varcahr)
+                                                                                              *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+SQL> create table item_master(item_id number(4),item_name varchar(15),price number(7),company_code varcah(5));
+create table item_master(item_id number(4),item_name varchar(15),price number(7),company_code varcah(5))
+                                                                                                    *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table item_master(item_id number(4),item_name varchar(15),price number(7),company_code int);
 
 Table created.
 
-SQL> desc order_detail;
+SQL> desc item_master;
  Name                                      Null?    Type
  ----------------------------------------- -------- ----------------------------
- ORDER_NO                                           NUMBER(5)
- ORDER_DATE                                         NUMBER(17)
- ITEM                                               VARCHAR2(19)
- ITEM_PRICE                                         NUMBER(15)
- DISCOUNT                                           NUMBER(5)
+ ITEM_ID                                            NUMBER(4)
+ ITEM_NAME                                          VARCHAR2(15)
+ PRICE                                              NUMBER(7)
+ COMPANY_CODE                                       NUMBER(38)
 
-SQL> insert into order_detail values(1,11_8_2026,'Laptop',70000,4000);
-insert into order_detail values(1,11_8_2026,'Laptop',70000,4000)
-                                    *
-ERROR at line 1:
-ORA-00911: invalid character 
-
-
-SQL> insert into order_detail values(1,11-8-2026,'Laptop',70000,4000);
-
-1 row created.
-
-SQL> select *from order_detail;
-
-  ORDER_NO ORDER_DATE ITEM                ITEM_PRICE   DISCOUNT                 
----------- ---------- ------------------- ---------- ----------                 
-         1      -2023 Laptop                   70000       4000                 
-
-SQL> insert into order_detail values(1,11-8-2026,'Laptop',70000,4000);
-
-1 row created.
-
-SQL> select *from order_detail;
-
-  ORDER_NO ORDER_DATE ITEM                ITEM_PRICE   DISCOUNT                 
----------- ---------- ------------------- ---------- ----------                 
-         1      -2023 Laptop                   70000       4000                 
-         1      -2023 Laptop                   70000       4000                 
-
-SQL> insert into order_detail values(1,11-aug-26,'Laptop',70000,4000);
-insert into order_detail values(1,11-aug-26,'Laptop',70000,4000)
-                                     *
-ERROR at line 1:
-ORA-00984: column not allowed here 
-
-
-SQL> insert into order_detail values(1,'11-aug-26','Laptop',70000,4000);
-insert into order_detail values(1,'11-aug-26','Laptop',70000,4000)
-                                  *
-ERROR at line 1:
-ORA-01722: invalid number 
-
-
-SQL> drop order_detail;
-drop order_detail
-     *
-ERROR at line 1:
-ORA-00950: invalid DROP option 
-
-
-SQL> drop table order_detail;
-
-Table dropped.
-
-SQL> create table order_detail(order_no number(4),order_date date,item varchar(17),item_price number(12),discount number(4));
-
-Table created.
-
-SQL> desc order_detail;
- Name                                      Null?    Type
- ----------------------------------------- -------- ----------------------------
- ORDER_NO                                           NUMBER(4)
- ORDER_DATE                                         DATE
- ITEM                                               VARCHAR2(17)
- ITEM_PRICE                                         NUMBER(12)
- DISCOUNT                                           NUMBER(4)
-
-SQL> insert into order_detail(1,'11-aug-26','Laptop',70000,2000);
-insert into order_detail(1,'11-aug-26','Laptop',70000,2000)
-                         *
+SQL> insert into item_master(01,'Rice',500,101);
+insert into item_master(01,'Rice',500,101)
+                        *
 ERROR at line 1:
 ORA-00928: missing SELECT keyword 
 
 
-SQL> insert into order_detail values(1,'11-aug-26','Laptop',70000,2000);
+SQL> insert into item_master values(01,'Rice',500,101);
 
 1 row created.
 
-SQL> select *from order_detail;
+SQL> select *from item_master;
 
-  ORDER_NO ORDER_DAT ITEM              ITEM_PRICE   DISCOUNT                    
----------- --------- ----------------- ---------- ----------                    
-         1 11-AUG-26 Laptop                 70000       2000                    
+   ITEM_ID ITEM_NAME            PRICE COMPANY_CODE                              
+---------- --------------- ---------- ------------                              
+         1 Rice                   500          101                              
 
-SQL> insert into order_detail values(2,'18-oct-26','keyboard',2000,250);
-
-1 row created.
-
-SQL> insert into order_detail values(3,'12-jun-24','computer',60000,2500);
+SQL> insert into item_master values(02,'oil',2500,002);
 
 1 row created.
 
-SQL> insert into order_detail values(4,'15-march-23','light',4500,200);
+SQL> insert into item_master values(03,'magdal',120,04);
 
 1 row created.
 
-SQL> select *from order_detail;
-
-  ORDER_NO ORDER_DAT ITEM              ITEM_PRICE   DISCOUNT                    
----------- --------- ----------------- ---------- ----------                    
-         1 11-AUG-26 Laptop                 70000       2000                    
-         2 18-OCT-26 keyboard                2000        250                    
-         3 12-JUN-24 computer               60000       2500                    
-         4 15-MAR-23 light                   4500        200                    
-
-SQL> select sum(item_price) as total_item_price from order_detail;
-
-TOTAL_ITEM_PRICE                                                                
-----------------                                                                
-          136500                                                                
-
-SQL> insert into order_detail values(5,'18-may-25','speker',2000,120);
+SQL> insert into item_master values(04,'tea',1500,001);
 
 1 row created.
 
-SQL> select sum(item_price) as total_item_price from order_detail;
+SQL> select *from item_master;
 
-TOTAL_ITEM_PRICE                                                                
-----------------                                                                
-          138500                                                                
+   ITEM_ID ITEM_NAME            PRICE COMPANY_CODE                              
+---------- --------------- ---------- ------------                              
+         1 Rice                   500          101                              
+         2 oil                   2500            2                              
+         3 magdal                 120            4                              
+         4 tea                   1500            1                              
 
-SQL> select *from order_detail;
+SQL> insert into item_master values(05,'milkpowder',250,202);
 
-  ORDER_NO ORDER_DAT ITEM              ITEM_PRICE   DISCOUNT                    
----------- --------- ----------------- ---------- ----------                    
-         1 11-AUG-26 Laptop                 70000       2000                    
-         2 18-OCT-26 keyboard                2000        250                    
-         3 12-JUN-24 computer               60000       2500                    
-         4 15-MAR-23 light                   4500        200                    
-         5 18-MAY-25 speker                  2000        120                    
+1 row created.
+
+SQL> select *from item where price between 200 and 600;
+select *from item where price between 200 and 600
+             *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT *
+  2  FROM ITEM
+  3  WHERE price BETWEEN 200 AND 600;
+FROM ITEM
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> select *from item_master where price between 200 and 600;
+
+   ITEM_ID ITEM_NAME            PRICE COMPANY_CODE                              
+---------- --------------- ---------- ------------                              
+         1 Rice                   500          101                              
+         5 milkpowder             250          202                              
+
+SQL> insert into item_master values(6,'powder',120,16);
+
+1 row created.
+
+SQL> select avg(price) as average_price from item_master where company_code =16;
+
+AVERAGE_PRICE                                                                   
+-------------                                                                   
+          120                                                                   
+
+SQL> select item_name ,price from item_master where price =(select min(price) from item_master);
+
+ITEM_NAME            PRICE                                                      
+--------------- ----------                                                      
+magdal                 120                                                      
+powder                 120                                                      
 
 SQL> 
