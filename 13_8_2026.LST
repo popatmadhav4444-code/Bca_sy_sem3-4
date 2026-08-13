@@ -1,0 +1,144 @@
+create table order_detail(order_no number(5),order_date number(17),item varchar(19),item_price number(15),discount number(5));
+
+Table created.
+
+SQL> desc order_detail;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ORDER_NO                                           NUMBER(5)
+ ORDER_DATE                                         NUMBER(17)
+ ITEM                                               VARCHAR2(19)
+ ITEM_PRICE                                         NUMBER(15)
+ DISCOUNT                                           NUMBER(5)
+
+SQL> insert into order_detail values(1,11_8_2026,'Laptop',70000,4000);
+insert into order_detail values(1,11_8_2026,'Laptop',70000,4000)
+                                    *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into order_detail values(1,11-8-2026,'Laptop',70000,4000);
+
+1 row created.
+
+SQL> select *from order_detail;
+
+  ORDER_NO ORDER_DATE ITEM                ITEM_PRICE   DISCOUNT                 
+---------- ---------- ------------------- ---------- ----------                 
+         1      -2023 Laptop                   70000       4000                 
+
+SQL> insert into order_detail values(1,11-8-2026,'Laptop',70000,4000);
+
+1 row created.
+
+SQL> select *from order_detail;
+
+  ORDER_NO ORDER_DATE ITEM                ITEM_PRICE   DISCOUNT                 
+---------- ---------- ------------------- ---------- ----------                 
+         1      -2023 Laptop                   70000       4000                 
+         1      -2023 Laptop                   70000       4000                 
+
+SQL> insert into order_detail values(1,11-aug-26,'Laptop',70000,4000);
+insert into order_detail values(1,11-aug-26,'Laptop',70000,4000)
+                                     *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into order_detail values(1,'11-aug-26','Laptop',70000,4000);
+insert into order_detail values(1,'11-aug-26','Laptop',70000,4000)
+                                  *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> drop order_detail;
+drop order_detail
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> drop table order_detail;
+
+Table dropped.
+
+SQL> create table order_detail(order_no number(4),order_date date,item varchar(17),item_price number(12),discount number(4));
+
+Table created.
+
+SQL> desc order_detail;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ORDER_NO                                           NUMBER(4)
+ ORDER_DATE                                         DATE
+ ITEM                                               VARCHAR2(17)
+ ITEM_PRICE                                         NUMBER(12)
+ DISCOUNT                                           NUMBER(4)
+
+SQL> insert into order_detail(1,'11-aug-26','Laptop',70000,2000);
+insert into order_detail(1,'11-aug-26','Laptop',70000,2000)
+                         *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> insert into order_detail values(1,'11-aug-26','Laptop',70000,2000);
+
+1 row created.
+
+SQL> select *from order_detail;
+
+  ORDER_NO ORDER_DAT ITEM              ITEM_PRICE   DISCOUNT                    
+---------- --------- ----------------- ---------- ----------                    
+         1 11-AUG-26 Laptop                 70000       2000                    
+
+SQL> insert into order_detail values(2,'18-oct-26','keyboard',2000,250);
+
+1 row created.
+
+SQL> insert into order_detail values(3,'12-jun-24','computer',60000,2500);
+
+1 row created.
+
+SQL> insert into order_detail values(4,'15-march-23','light',4500,200);
+
+1 row created.
+
+SQL> select *from order_detail;
+
+  ORDER_NO ORDER_DAT ITEM              ITEM_PRICE   DISCOUNT                    
+---------- --------- ----------------- ---------- ----------                    
+         1 11-AUG-26 Laptop                 70000       2000                    
+         2 18-OCT-26 keyboard                2000        250                    
+         3 12-JUN-24 computer               60000       2500                    
+         4 15-MAR-23 light                   4500        200                    
+
+SQL> select sum(item_price) as total_item_price from order_detail;
+
+TOTAL_ITEM_PRICE                                                                
+----------------                                                                
+          136500                                                                
+
+SQL> insert into order_detail values(5,'18-may-25','speker',2000,120);
+
+1 row created.
+
+SQL> select sum(item_price) as total_item_price from order_detail;
+
+TOTAL_ITEM_PRICE                                                                
+----------------                                                                
+          138500                                                                
+
+SQL> select *from order_detail;
+
+  ORDER_NO ORDER_DAT ITEM              ITEM_PRICE   DISCOUNT                    
+---------- --------- ----------------- ---------- ----------                    
+         1 11-AUG-26 Laptop                 70000       2000                    
+         2 18-OCT-26 keyboard                2000        250                    
+         3 12-JUN-24 computer               60000       2500                    
+         4 15-MAR-23 light                   4500        200                    
+         5 18-MAY-25 speker                  2000        120                    
+
+SQL> 
